@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You 🌹</title>
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    background: radial-gradient(circle, #ff8fab, #b30059, #000);
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #clickBtn {
+    padding: 20px 40px;
+    font-size: 32px;
+    background: gold;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 0 25px rgba(255,215,0,0.9);
+    z-index: 10;
+  }
+
+  .message {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    color: gold;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 0 0 30px rgba(255,215,0,1);
+    transition: 0.7s ease;
+    z-index: 9;
+    pointer-events: none;
+  }
+
+  .sub {
+    font-size: 26px;
+    color: #ffd1dc;
+    margin-top: 10px;
+  }
+
+  .fall {
+    position: absolute;
+    top: -80px;
+    user-select: none;
+    pointer-events: none;
+    animation: fall linear forwards;
+  }
+
+  @keyframes fall {
+    from {
+      transform: translateY(0) scale(1.6) rotate(0deg);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(130vh) scale(0.6) rotate(360deg);
+      opacity: 0;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<button id="clickBtn">CLICK ME 😛</button>
+
+<div class="message" id="msg">
+  Happy Rose Day 😭💐
+  <div class="sub">Mithu Rani 💕</div>
+</div>
+
+<script>
+  const btn = document.getElementById("clickBtn");
+  const msg = document.getElementById("msg");
+
+  btn.addEventListener("click", () => {
+    btn.style.display = "none";
+    msg.style.transform = "translate(-50%, -50%) scale(1)";
+    blast();
+    setInterval(softRain, 200);
+  });
+
+  // FULL SCREEN BIG BLAST 🌹
+  function blast() {
+    for (let i = 0; i < 160; i++) {
+      const el = document.createElement("div");
+      el.className = "fall";
+      el.textContent = Math.random() > 0.4 ? "🌹" : "💖";
+
+      el.style.left = Math.random() * window.innerWidth + "px";
+      el.style.top = Math.random() * window.innerHeight + "px";
+      el.style.fontSize = Math.random() * 70 + 40 + "px";
+      el.style.animationDuration = Math.random() * 2 + 3 + "s";
+
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 7000);
+    }
+  }
+
+  // SOFT CONTINUOUS ROSE RAIN 🌹
+  function softRain() {
+    const el = document.createElement("div");
+    el.className = "fall";
+    el.textContent = "🌹";
+
+    el.style.left = Math.random() * window.innerWidth + "px";
+    el.style.fontSize = Math.random() * 35 + 22 + "px";
+    el.style.animationDuration = Math.random() * 4 + 5 + "s";
+
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 10000);
+  }
+</script>
+
+</body>
+</html>
